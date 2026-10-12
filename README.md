@@ -7,15 +7,15 @@ The primary goal is to analyze corporate financial statements to identify patter
 
 ## Data Scope and Analytical Framework
 The research analyzes the multi-year financial performance based on the Altman model, looking at:
-*   **Liquidity:** Working Cap/Total Assets (TA), Total Liab/TA
-*   **Profitability:** Retained Earn/TA, EBIT/TA, Net Income/TA
-*   **Solvency:** Equity/TA, Debt/Equity
-*   **Efficiency:** Asset Turnover, Net Profit Margin, Net Debt/EBIT
+*   **Liquidity:** Working Cap / Total Assets (TA), Total Liab / TA
+*   **Profitability:** Retained Earn / TA, EBIT / TA, Net Income / TA
+*   **Solvency:** Equity / TA, Debt / Equity
+*   **Efficiency:** Asset Turnover, Net Profit Margin, Net Debt / EBIT
 
 ### Dynamic Trends Feature Engineering
 To capture the momentum of financial distress, we engineered trend-based features:
-*   **Recent Trend (Momentum):** $\Delta_{2} = \text{Ratio}_{2018} - \text{Ratio}_{2017}$
-*   **Acceleration (Spiraling):** $\text{Acc} = \Delta_{2} - \Delta_{1}$
+*   **Recent Trend (Momentum):** Δ₂ = Ratio (2018) - Ratio (2017)
+*   **Acceleration (Spiraling):** Acc = Δ₂ - Δ₁
 *   **Volatility:** High fluctuations in efficiency and profitability ratios.
 *   **Predictivity:** Recent changes are heavily weighted as more predictive than older ones.
 
@@ -30,8 +30,8 @@ Based on feature importance analysis, the following drivers were identified:
 
 **Drivers that increase risk:**
 *   Total Liabilities / Total Assets [Level 2018]
-*   Total Liabilities / Total Assets [$\Delta$ Trend 2017-2018]
-*   Net Debt / EBIT [$\Delta$ Trend 2017-2018]
+*   Total Liabilities / Total Assets [Δ Trend 2017-2018]
+*   Net Debt / EBIT [Δ Trend 2017-2018]
 
 **Drivers that reduce risk:**
 *   Shareholders Funds / Total Assets [Level 2018]
@@ -46,14 +46,15 @@ Based on feature importance analysis, the following drivers were identified:
 **Mitigation Factors:**
 *   High retained earnings
 *   Stable efficiency ratios
-*   Strong interest coverage (>3.0)
+*   Strong interest coverage (> 3.0)
 
 ## Repository Contents
 *   `financial.py`: Main Python script containing the feature engineering (building ratios, deltas, and accelerations), model training (Logistic Regression, Random Forest, and Voting Ensemble with GridSearchCV), and evaluation metrics.
 *   `challenge_train.xlsx`: Training dataset containing the financial data.
 *   `challenge_test_without_target_.xlsx`: Test dataset for predictions.
 
+
 ## Final Conclusions
 *   **Ensemble Success:** The combination of Logistic Regression and Random Forest provided stable results across regional datasets.
-*   **Dynamic Superiority:** Trend-based features ($\Delta$) often outperformed static single-year snapshots in predicting eventual bankruptcy.
+*   **Dynamic Superiority:** Trend-based features (Δ) often outperformed static single-year snapshots in predicting eventual bankruptcy.
 *   **Operational Impact:** The model allows financial institutions to choose a customized decision boundary threshold to balance false positives and false negatives according to their risk tolerance.
